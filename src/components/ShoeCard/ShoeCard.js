@@ -37,9 +37,9 @@ const ShoeCard = ({
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
-        {variant === 'on-sale' && <SalePrice>Sale</SalePrice>}
+        {variant === 'on-sale' && <SaleTag>Sale</SaleTag>}
         {variant === 'new-release' && (
-          <JustReleased>Just released!</JustReleased>
+          <JustReleasedTag>Just released!</JustReleasedTag>
         )}
         <Spacer size={12} />
         <Row>
@@ -109,11 +109,11 @@ const VariantTag = styled.span`
   color: ${COLORS.white};
 `;
 
-const SalePrice = styled(VariantTag)`
+const SaleTag = styled(VariantTag)`
   background-color: ${COLORS.primary};
 `;
 
-const JustReleased = styled(VariantTag)`
+const JustReleasedTag = styled(VariantTag)`
   background-color: ${COLORS.secondary};
 `;
 
