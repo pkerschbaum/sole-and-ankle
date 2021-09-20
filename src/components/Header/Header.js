@@ -12,7 +12,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Logo />
+        <SideSpacer>
+          <Logo />
+        </SideSpacer>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -21,16 +23,12 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        {/* render a spacing component which takes as much space as the logo.
-         * That way, the navigation is horizontally centered.
-         * The spacer component will shrink first if no space is available. */}
-        <LogoTwinSpacer />
+        <SideSpacer />
       </MainHeader>
     </header>
   );
 };
 
-const LOGO_WIDTH = 130;
 const FLEX_GAP = 48;
 
 const MainHeader = styled.div`
@@ -38,11 +36,9 @@ const MainHeader = styled.div`
 
   display: flex;
   align-items: baseline;
-  padding: 22px 32px;
-
-  & > *:first-of-type {
-    padding-right: ${FLEX_GAP}px;
-  }
+  /* omit padding on the right side since there will be a "gap" anyway (because of the empty SideSpacer element) */
+  padding: 22px 0 22px 32px;
+  gap: 32px;
 `;
 
 const Nav = styled.nav`
@@ -67,9 +63,8 @@ const NavLink = styled.a`
   }
 `;
 
-const LogoTwinSpacer = styled.div`
-  flex-basis: ${LOGO_WIDTH + FLEX_GAP}px;
-  flex-shrink: 999999999;
+const SideSpacer = styled.div`
+  flex: 1;
 `;
 
 export default Header;
