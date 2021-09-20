@@ -37,6 +37,10 @@ const ShoeCard = ({
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
+        {variant === 'on-sale' && <SalePrice>Sale</SalePrice>}
+        {variant === 'new-release' && (
+          <JustReleased>Just released!</JustReleased>
+        )}
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -58,7 +62,9 @@ const Link = styled.a`
   flex-grow: 1;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -87,9 +93,28 @@ const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
 `;
 
-const SalePrice = styled.span`
+const VariantTag = styled.span`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+
+  padding: 6px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 2px;
   font-weight: ${WEIGHTS.medium};
-  color: ${COLORS.primary};
+  font-size: ${14 / 16}rem;
+  color: ${COLORS.white};
+`;
+
+const SalePrice = styled(VariantTag)`
+  background-color: ${COLORS.primary};
+`;
+
+const JustReleased = styled(VariantTag)`
+  background-color: ${COLORS.secondary};
 `;
 
 export default ShoeCard;
