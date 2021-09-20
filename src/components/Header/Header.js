@@ -21,19 +21,41 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        {/* render a spacing component which takes as much space as the logo.
+         * That way, the navigation is horizontally centered.
+         * The spacer component will shrink first if no space is available. */}
+        <LogoTwinSpacer />
       </MainHeader>
     </header>
   );
 };
 
+const LOGO_WIDTH = 130;
+const FLEX_GAP = 48;
+
 const MainHeader = styled.div`
-  padding: 0 32px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  display: flex;
+  align-items: baseline;
+  padding: 22px 32px;
+
+  & > *:first-of-type {
+    padding-right: ${FLEX_GAP}px;
+  }
 `;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: ${FLEX_GAP}px;
+`;
 
 const NavLink = styled.a`
+  text-align: center;
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -43,6 +65,11 @@ const NavLink = styled.a`
   &:first-of-type {
     color: ${COLORS.secondary};
   }
+`;
+
+const LogoTwinSpacer = styled.div`
+  flex-basis: ${LOGO_WIDTH + FLEX_GAP}px;
+  flex-shrink: 999999999;
 `;
 
 export default Header;
