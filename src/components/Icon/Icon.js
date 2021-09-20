@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import {
-  Search,
-  Menu,
-  ShoppingBag,
-  ChevronDown,
-} from 'react-feather';
+import { Search, Menu, ShoppingBag, ChevronDown } from 'react-feather';
 
 const icons = {
   search: Search,
